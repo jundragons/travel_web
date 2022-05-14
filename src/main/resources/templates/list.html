@@ -7,18 +7,27 @@
 <body>
     <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <div class="container">
-        <div class="row">
-            <div class="col-sm-3" th:each="country : ${countries}">
-                <div class="card border-primary mb-3" style="max-width: 20rem;">
-                    <div class="card-body">
-                        <h4 class="card-title" th:text="${country.countryName}"></h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a th:href="@{/country/{id}(id=${country.id})}" class="card-link">자세히 보기</a>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+            <label class="form-check-label" for="flexSwitchCheckChecked">백신 접종</label>
+        </div>
+
+        <div class="container px-4 py-5" id="icon-grid">
+            <h2 class="pb-2 border-bottom">국가 목록</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+                <div th:each="country : ${countries}">
+                    <div class="col d-flex align-items-start">
+                        <img th:src="@{/images/{imgName}.svg(imgName=${country.countryName})}" style="width: 1.75em; height: 1.75em"/>
+                        <div>
+                            <h4 class="fw-bold mb-0" th:text="${country.countryName}"></h4>
+                            <p>설명 넣어야됨</p>
+                            <a th:href="@{/country/{id}(id=${country.id})}" class="btn btn-primary btn-sm">상세보기</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 <!--    <div th:replace="fragments/footer :: footer" />-->
-    </div> <!-- /container -->
+    </div>
 </body>
 </html>
