@@ -1,8 +1,8 @@
 package com.journey.covid_journey.domain;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,8 +19,10 @@ public class Country {
     @Column(name = "country_name")
     private String countryName;
 
+    @ColumnDefault("0")
     private int viewCount;
 
+    @ColumnDefault("0")
     private int likeCount;
 
     private String maskInfo;
@@ -33,9 +35,6 @@ public class Country {
     private List<Comment> commentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "country")
-    private List<Info> infoList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "country")
-    private List<Document> documentList = new ArrayList<>();
+    private List<CountryDetail> infoList = new ArrayList<>();
 
 }

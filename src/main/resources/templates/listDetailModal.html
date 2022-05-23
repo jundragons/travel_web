@@ -8,11 +8,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <section th:each="detail : ${details}">
+                    <div th:block th:if="${detail.vaccinated==true}">
+                        <h2 th:text="${detail.country.getCountryName()}"></h2>
+                        <h2 th:text="${detail.visa}"></h2>
+                    </div>
+<!--                </div>-->
+                    <p>Modal body text goes here.</p>
+                </section>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>

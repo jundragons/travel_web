@@ -7,10 +7,10 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
-public class Info {
+public class CountryDetail {
 
     @Id @GeneratedValue
-    @Column(name = "info_id")
+    @Column(name = "country_detail_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

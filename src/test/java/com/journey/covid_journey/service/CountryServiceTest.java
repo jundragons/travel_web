@@ -1,6 +1,7 @@
 package com.journey.covid_journey.service;
 
 import com.journey.covid_journey.domain.Country;
+import com.journey.covid_journey.domain.CountryDetail;
 import com.journey.covid_journey.repository.CountryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ class CountryServiceTest {
     @Autowired CountryService countryService;
     @Autowired
     CountryRepository countryRepository;
-
     @Test
     void 국가생성(){
         Country c1 = new Country();
@@ -26,6 +26,8 @@ class CountryServiceTest {
         Country country = countryRepository.findById(c1.getId()).orElseThrow(()->new IllegalArgumentException());
         assertEquals(c1.getId(),country.getId());
     }
+
+
     @Test
     void 전체국가조회(){
         Country c1 = new Country();
@@ -35,7 +37,7 @@ class CountryServiceTest {
         c2.setCountryName("중국");
         countryRepository.save(c2);
 
-        List<Country> list = countryService.getList();
+        List<Country> list = countryService.getCountryList();
         assertEquals(2,list.size());
 
     }

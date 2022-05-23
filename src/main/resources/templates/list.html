@@ -14,11 +14,15 @@
 
         <div class="container px-4 py-5" id="icon-grid">
             <h2 class="pb-2 border-bottom">국가 목록</h2>
+            <div>
+
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
                 <div th:each="country : ${countries}">
-                    <div class="col d-flex align-items-start">
-                        <img th:src="@{/images/{imgName}.svg(imgName=${country.countryName})}" style="width: 1.75em; height: 1.75em"/>
-                        <div>
+                    <div class="col d-flex align-items-start border border-dark" style="border-radius: 8px">
+                        <img class="m-1 rounded" th:src="@{/images/{imgName}.svg(imgName=${country.countryName})}"
+                             style="width: 1.75em; height: 1.75em"/>
+                        <div class="m-1">
                             <h4 class="fw-bold mb-0" th:text="${country.countryName}"></h4>
                             <p>설명 넣어야됨</p>
                             <a th:href="@{/country/{id}(id=${country.id})}" class="btn btn-primary btn-sm">상세보기</a>
