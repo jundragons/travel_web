@@ -37,4 +37,7 @@ public class Country {
     @OneToMany(mappedBy = "country")
     private List<CountryDetail> infoList = new ArrayList<>();
 
+    public void viewCount(){
+        this.viewCount+=1;
+    }
 }

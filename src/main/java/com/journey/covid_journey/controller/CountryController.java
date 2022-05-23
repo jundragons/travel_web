@@ -26,6 +26,7 @@ public class CountryController {
 
     @GetMapping("/country/{id}")
     public String countryDetail(@PathVariable Long id,Model model){
+
         List<CountryDetail> detailList = countryService.getDetailList(id);
         model.addAttribute("details",detailList);
         return "listDetailModal";

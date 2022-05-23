@@ -29,9 +29,12 @@ public class CountryService {
         return countryRepository.findAll();
     }
 
+    @Transactional
     public List<CountryDetail> getDetailList(Long id){
-        Optional<Country> country = countryRepository.findById(id);
-        List<CountryDetail> detailList = country.get().getInfoList();
+        Optional<Country> optionalCountry = countryRepository.findById(id);
+        Country country = optionalCountry.get();
+        country.viewCount();
+        List<CountryDetail> detailList = country.getInfoList();
         return detailList;
     }
 
